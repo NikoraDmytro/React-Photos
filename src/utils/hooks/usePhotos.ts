@@ -1,13 +1,9 @@
 import { useState, useEffect } from "react";
+import { Photo } from "../../shared/types/PhotosTypes";
 import { getPhotos } from "./../functions/getPhotos";
 
-interface Photos {
-  id: number;
-  url: string;
-}
-
-export const usePhotos = (): Photos[] | undefined => {
-  const [Photos, setPhotos] = useState<Photos[] | undefined>();
+export const usePhotos = (): Photo[] | undefined => {
+  const [Photos, setPhotos] = useState<Photo[] | undefined>();
 
   useEffect(() => {
     const loadData = async () => {

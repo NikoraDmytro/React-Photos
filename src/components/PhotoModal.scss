@@ -10,8 +10,33 @@
   justify-content: center;
 }
 
+header {
+  display: flex;
+  justify-content: flex-end;
+  .CloseButton {
+    cursor: pointer;
+    width: calc(0.5em + 2.5vw);
+  }
+}
+
 .ModalWindow {
-  width: 90%;
+  width: 65%;
+  padding: 0 2.5%;
   background-color: #ffffff;
   border-radius: 10px;
+  & > img {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .ModalWindow {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .ModalWindow {
+    width: 95%;
+  }
 }

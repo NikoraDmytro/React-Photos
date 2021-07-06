@@ -3,7 +3,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 0.5em;
-  img {
+  & > img {
     margin-bottom: 2%;
     width: 32%;
     cursor: pointer;

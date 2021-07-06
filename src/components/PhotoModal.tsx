@@ -1,21 +1,28 @@
 import React from "react";
+import { PhotoModalProps } from "../shared/types/PhotosTypes";
+import CloseButton from "../shared/img/Close.png";
 import "./PhotoModal.scss";
 
-interface PhotoModalProps {
-  PhotoId: number;
-}
-
 export const PhotoModal = ({
-  PhotoId,
+  photo,
+  close,
 }: PhotoModalProps): JSX.Element | null => {
-  if (PhotoId < 0) {
+  if (typeof photo === "undefined") {
     return null;
   }
 
   return (
     <div className="FixedLayout">
       <div className="ModalWindow">
-        <h1>{PhotoId}</h1>
+        <header>
+          <img
+            src={CloseButton}
+            className="CloseButton"
+            alt="Close"
+            onClick={close}
+          />
+        </header>
+        <img src={photo.url} alt="Not Found" />
       </div>
     </div>
   );
