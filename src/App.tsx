@@ -1,33 +1,31 @@
-import React, { useEffect, useState } from "react";
-import { getPhotos } from "./utils/functions/getPhotos";
+import React, { useState } from "react";
 import "./App.scss";
-
-interface Photos {
-  id: number;
-  url: string;
-}
+import { usePhotos } from "./utils/hooks/usePhotos";
+import { PhotoModal } from "./components/PhotoModal";
 
 function App(): JSX.Element {
-  const [Photos, setPhotos] = useState<Photos[] | undefined>();
+  const Photos = usePhotos();
+  const [PhotoId, setPhotoId] = useState(-1);
 
-  useEffect(() => {
-    const loadData = async () => {
-      const data = await getPhotos();
-      setPhotos(data);
-    };
-
-    console.log("too much")!;
-    loadData();
-  });
-
-  if (typeof Photos === undefined) {
+  if (typeof Photos === "undefined") {
     return <h1>Loading</h1>;
   }
 
+  const selectPhoto = (id: number) => {
+    setPhotoId(id);
+  };
+
   return (
     <div className="App">
+      <PhotoModal PhotoId={PhotoId} />
+
       {Photos?.map((photo) => (
-        <img key={photo.id} src={photo.url} alt="Not Found" />
+        <img
+          onClick={() => selectPhoto(photo.id)}
+          key={photo.id}
+          src={photo.url}
+          alt="Not Found"
+        />
       ))}
     </div>
   );
