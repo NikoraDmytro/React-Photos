@@ -9,12 +9,17 @@ function App(): JSX.Element {
 
   const closeModal = () => setSelectedPhotoId(undefined);
 
+  const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>): void => {
+    console.log(e.key);
+    if (e.key === "Escape") closeModal();
+  };
+
   if (typeof Photos === "undefined") {
     return <h1>Loading</h1>;
   }
 
   return (
-    <div className="App">
+    <div className="App" onKeyDown={onKeyDown} tabIndex={0}>
       {typeof selectedPhotoId !== "undefined" ? (
         <PhotoModal photoId={selectedPhotoId} close={closeModal} />
       ) : null}

@@ -14,7 +14,7 @@ export const CommentSection = ({
   const Comment = ({ comment }: { comment: Comment }) => {
     const date = new Date(comment.date);
     return (
-      <li key={comment.id}>
+      <li>
         <p className="CommentHeader">
           <b>{comment.name || "Anonymous"}</b> <time>{parseDate(date)}</time>
         </p>
@@ -28,7 +28,9 @@ export const CommentSection = ({
       <span className="CommentsNumber">{Comments.length} comment(s)</span>
       <ul className="Comments">
         {Comments.length ? (
-          Comments?.map((comment) => <Comment comment={comment} />)
+          Comments?.map((comment) => (
+            <Comment key={comment.id} comment={comment} />
+          ))
         ) : (
           <h3>No Comments</h3>
         )}
