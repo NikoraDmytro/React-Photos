@@ -1,9 +1,10 @@
 import React from "react";
 import { PhotoModalProps } from "../shared/types/PhotosTypes";
-import CloseButton from "../shared/img/Close.png";
 import "./PhotoModal.scss";
 import { PhotoInfoStore } from "./../stores/PhotosInfoStore";
 import { observer } from "mobx-react";
+import { ModalHeader } from "./ModalHeader";
+import { CommentSection } from "./CommentSection";
 
 export const PhotoModal = observer(
   ({ photoId, close }: PhotoModalProps): JSX.Element => {
@@ -19,29 +20,9 @@ export const PhotoModal = observer(
     return (
       <div className="FixedLayout">
         <div className="ModalWindow">
-          {imageUrl ? (
-            <header>
-              <img
-                src={CloseButton}
-                className="CloseButton"
-                alt="Close"
-                onClick={close}
-              />
-              <img className="picture" src={imageUrl} alt="Not Found" />
-            </header>
-          ) : (
-            <h1>Loading</h1>
-          )}
+          <ModalHeader imageUrl={imageUrl} close={close} />
 
-          {typeof Comments !== "undefined" ? (
-            <ul>
-              {Comments?.map((comment) => (
-                <li key={comment.id}>{comment.text}</li>
-              ))}
-            </ul>
-          ) : (
-            <h1>Loading</h1>
-          )}
+          <CommentSection Comments={Comments} />
         </div>
       </div>
     );

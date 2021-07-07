@@ -39,3 +39,30 @@ header {
     display: none;
   }
 }
+
+.CommentSection {
+  margin-top: 1em;
+  .CommentsNumber {
+    font-size: 1.5em;
+  }
+  .Comments {
+    list-style-type: none;
+    padding-left: 0;
+    border-top: 2px solid black;
+    h3 {
+      text-align: center;
+    }
+    p {
+      margin: 0.5em 0;
+    }
+    .CommentText {
+      margin-top: 0;
+      margin-left: 0.75em;
+    }
+    time {
+      font-size: 0.75em;
+      margin-left: 0.25em;
+      font-weight: lighter;
+    }
+  }
+}
