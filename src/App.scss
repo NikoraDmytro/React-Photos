@@ -11,13 +11,13 @@
 }
 
 @media screen and (max-width: 800px) {
-  .App img {
+  .App > img {
     width: 49%;
   }
 }
 
 @media screen and (max-width: 550px) {
-  .App img {
+  .App > img {
     width: 100%;
   }
 }

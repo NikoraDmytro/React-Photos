@@ -19,16 +19,19 @@ export const PhotoModal = observer(
     return (
       <div className="FixedLayout">
         <div className="ModalWindow">
-          <header>
-            <img
-              src={CloseButton}
-              className="CloseButton"
-              alt="Close"
-              onClick={close}
-            />
-          </header>
-
-          {imageUrl ? <img src={imageUrl} alt="Not Found" /> : <h1>Loading</h1>}
+          {imageUrl ? (
+            <header>
+              <img
+                src={CloseButton}
+                className="CloseButton"
+                alt="Close"
+                onClick={close}
+              />
+              <img className="picture" src={imageUrl} alt="Not Found" />
+            </header>
+          ) : (
+            <h1>Loading</h1>
+          )}
 
           {typeof Comments !== "undefined" ? (
             <ul>
