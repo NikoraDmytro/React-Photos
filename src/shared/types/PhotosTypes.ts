@@ -4,6 +4,16 @@ export type Photo = {
 };
 
 export type PhotoModalProps = {
-  photo: Photo | undefined;
+  photoId: number;
   close: () => void;
+};
+
+export type Comment = {
+  id: number;
+  text: string;
+  date: number;
+};
+
+export type PhotoInfo = Photo & {
+  Comments: Comment[] | [];
 };

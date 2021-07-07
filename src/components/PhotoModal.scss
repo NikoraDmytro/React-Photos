@@ -20,23 +20,11 @@ header {
 }
 
 .ModalWindow {
-  width: 65%;
+  width: 95%;
   padding: 0 2.5%;
   background-color: #ffffff;
   border-radius: 10px;
   & > img {
     width: 100%;
-  }
-}
-
-@media screen and (max-width: 900px) {
-  .ModalWindow {
-    width: 80%;
-  }
-}
-
-@media screen and (max-width: 550px) {
-  .ModalWindow {
-    width: 95%;
   }
 }
