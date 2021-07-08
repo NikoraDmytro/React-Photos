@@ -9,7 +9,7 @@ export type PhotoModalProps = {
 };
 
 export type Comment = {
-  id: number;
+  id: number | string;
   name?: string;
   text: string;
   date: number;

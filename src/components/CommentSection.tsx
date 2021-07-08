@@ -1,6 +1,7 @@
 import React from "react";
 import { Comment } from "../shared/types/PhotosTypes";
 import { parseDate } from "../utils/functions/parseDate";
+import { AddCommentForm } from "./AddCommentForm";
 
 interface CommentSectionProps {
   Comments: Comment[] | undefined;
@@ -26,7 +27,9 @@ export const CommentSection = ({
   return (
     <div className="CommentSection">
       <span className="CommentsNumber">{Comments.length} comment(s)</span>
+
       <ul className="Comments">
+        <AddCommentForm />
         {Comments.length ? (
           Comments?.map((comment) => (
             <Comment key={comment.id} comment={comment} />
