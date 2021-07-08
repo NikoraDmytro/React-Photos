@@ -1,5 +1,5 @@
 import { flow, makeAutoObservable } from "mobx";
-import { PhotoInfo } from "../shared/types/PhotosTypes";
+import { PhotoInfo, Comment } from "../shared/types/PhotosTypes";
 import { getPhotoInfo } from "./../utils/functions/getPhotoInfo";
 
 class PhotosInfo {
@@ -23,6 +23,13 @@ class PhotosInfo {
       console.log(err);
     }
   });
+
+  AddNewComment(comment: Comment, photoId: number) {
+    const photoInfo = this.photos[photoId];
+    photoInfo.Comments.push(comment);
+
+    this.photos[photoId] = photoInfo;
+  }
 }
 
 export const PhotoInfoStore = new PhotosInfo();

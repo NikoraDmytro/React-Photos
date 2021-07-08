@@ -10,7 +10,6 @@ function App(): JSX.Element {
   const closeModal = () => setSelectedPhotoId(undefined);
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>): void => {
-    console.log(e.key);
     if (e.key === "Escape") closeModal();
   };
 

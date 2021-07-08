@@ -22,7 +22,7 @@ export const PhotoModal = observer(
         <div className="ModalWindow">
           <ModalHeader imageUrl={imageUrl} close={close} />
 
-          <CommentSection Comments={Comments} />
+          <CommentSection photoId={photoId} Comments={Comments} />
         </div>
       </div>
     );

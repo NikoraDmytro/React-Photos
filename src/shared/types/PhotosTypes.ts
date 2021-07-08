@@ -16,5 +16,9 @@ export type Comment = {
 };
 
 export type PhotoInfo = Photo & {
-  Comments: Comment[] | [];
+  Comments: Comment[];
+};
+
+export type FormProps = {
+  photoId: number;
 };

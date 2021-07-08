@@ -1,31 +1,22 @@
 import React from "react";
-import { Formik, FormikHelpers, Form, Field, ErrorMessage } from "formik";
-import { Comment } from "../shared/types/PhotosTypes";
-import { uuid } from "uuidv4";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Comment, FormProps } from "../shared/types/PhotosTypes";
 import { AddCommentFormValidation } from "./../utils/validation/AddCommentFormValidation";
+import { AddNewComment } from "./../utils/functions/AddNewComment";
 
-export const AddCommentForm = (): JSX.Element => {
+export const AddCommentForm = ({ photoId }: FormProps): JSX.Element => {
   const initialValues: Comment = {
-    id: uuid(),
+    id: "",
     name: "",
     text: "",
     date: 0,
-  };
-
-  const onSubmit = (
-    values: Comment,
-    { setSubmitting, resetForm }: FormikHelpers<Comment>
-  ) => {
-    console.log(values);
-    setSubmitting(false);
-    resetForm();
   };
 
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={AddCommentFormValidation}
-      onSubmit={onSubmit}
+      onSubmit={(values, actions) => AddNewComment(photoId, values, actions)}
     >
       <Form className="AddCommentForm">
         <div className="FormInput">
