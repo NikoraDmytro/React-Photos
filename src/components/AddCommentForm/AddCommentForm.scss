@@ -1,37 +1,40 @@
 .addCommentForm {
-  margin: 0.25em 0;
+  padding-top: 0.5em;
+  width: 100%;
+  border-top: 2px solid black;
   display: flex;
   flex-direction: column;
-  width: 90%;
+
+  input,
+  button {
+    border: none;
+    outline: none;
+    font-size: 1em;
+  }
+
   .formInput {
+    width: 90%;
     border-bottom: 1px solid #bfbfc8;
     position: relative;
     padding: 0.25em;
     input {
       width: 100%;
-      font-size: 1em;
-      outline: none;
-      border: none;
-      &:-webkit-autofill {
-        -webkit-box-shadow: 0 0 0 30px white inset !important;
-      }
     }
     .error {
       color: #ed1931;
-      font-size: 0.75em;
+      font-size: 0.9em;
       position: absolute;
-      right: 0;
+      right: 0.5em;
       bottom: 0;
     }
   }
+
   .addCommentButton {
     width: fit-content;
     margin-top: 0.75em;
     padding: 0.5em 1.5em;
     cursor: pointer;
-    border: none;
     color: white;
-    font-size: 1em;
     background-color: #065fd4;
     &:hover {
       background-color: #2e82ed;

@@ -13,8 +13,6 @@ export const addNewComment = async (
   actions: FormikHelpers<FormValues>
 ) => {
   try {
-    console.log("here");
-
     const response = await axios.post(url + photoId + "/comments", {
       name: formValues.userName,
       comment: formValues.text,

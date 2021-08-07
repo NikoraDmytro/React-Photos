@@ -13,24 +13,26 @@ export const PhotoModal = observer(
 
     if (photoId === -1) return <></>;
 
+    const outsideClick = () => close();
+    const insideClick = (e: React.MouseEvent<HTMLDivElement>) => {
+      e.stopPropagation();
+    };
+
     const photoInfo = Store.photos[photoId] || Store.loadPhotoData(photoId);
 
     const imageUrl = photoInfo.url;
     const comments = photoInfo.comments;
 
     return (
-      <div className="modalLayout">
-        <div className="modal">
-          {imageUrl && comments ? (
-            <>
-              <ModalHeader imageUrl={imageUrl} close={close} />
-
-              <CommentSection comments={comments} />
-            </>
-          ) : (
-            <h1>Loading</h1>
-          )}
-        </div>
+      <div className="modalLayout" onClick={outsideClick}>
+        {imageUrl && comments ? (
+          <div className="modal" onClick={insideClick}>
+            <ModalHeader imageUrl={imageUrl} close={close} />
+            <CommentSection comments={comments} />
+          </div>
+        ) : (
+          <h1>Loading</h1>
+        )}
       </div>
     );
   }

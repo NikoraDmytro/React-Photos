@@ -6,7 +6,7 @@ export const InputField = ({ name, ...props }: InputFieldProps) => {
 
   return (
     <div className="formInput">
-      <input type="text" {...field} {...props} />
+      <input type="text" autoComplete="off" {...field} {...props} />
       {meta.error && meta.touched ? (
         <strong className="error">{meta.error}</strong>
       ) : null}
