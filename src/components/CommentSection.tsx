@@ -5,16 +5,15 @@ import { AddCommentForm } from "./AddCommentForm";
 
 interface CommentSectionProps {
   comments: Comment[] | undefined;
-  photoId: number;
 }
 
 export const CommentSection = observer(
-  ({ comments, photoId }: CommentSectionProps): JSX.Element => {
+  ({ comments }: CommentSectionProps): JSX.Element => {
     if (typeof comments === "undefined") return <h1>Loading</h1>;
 
     return (
       <div className="commentSection">
-        <AddCommentForm photoId={photoId} />
+        <AddCommentForm />
         <span className="commentsQuantity">{comments.length} comment(s)</span>
         <ul className="comments">
           {comments.length ? (

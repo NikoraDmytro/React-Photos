@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { addCommentFormValidation } from "./../utils/validation/AddCommentFormValidation";
 import { addNewComment } from "./../utils/functions/AddNewComment";
-import { FormProps, FormValues } from "../shared/types/FormTypes";
+import { FormValues } from "../shared/types/FormTypes";
+import { PhotoIdContext } from "./../App";
 
-export const AddCommentForm = ({ photoId }: FormProps): JSX.Element => {
+export const AddCommentForm = (): JSX.Element => {
+  const photoId = useContext(PhotoIdContext);
+
   const initialValues: FormValues = {
     userName: "",
     text: "",

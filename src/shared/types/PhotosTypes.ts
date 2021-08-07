@@ -4,7 +4,6 @@ export type Photo = {
 };
 
 export type PhotoModalProps = {
-  photoId: number;
   close: () => void;
 };
 

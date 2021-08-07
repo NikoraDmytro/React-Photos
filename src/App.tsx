@@ -3,6 +3,8 @@ import "./App.scss";
 import { usePhotos } from "./utils/hooks/usePhotos";
 import { PhotoModal } from "./components/PhotoModal";
 
+export const PhotoIdContext = React.createContext<number>(-1);
+
 function App(): JSX.Element {
   const photos = usePhotos();
   const [selectedPhotoId, setSelectedPhotoId] = useState<number>(-1);
@@ -15,7 +17,9 @@ function App(): JSX.Element {
 
   return (
     <div className="app" onKeyDown={onKeyDown} tabIndex={0}>
-      <PhotoModal photoId={selectedPhotoId} close={closeModal} />
+      <PhotoIdContext.Provider value={selectedPhotoId}>
+        <PhotoModal close={closeModal} />
+      </PhotoIdContext.Provider>
 
       {photos.map((photo) => (
         <img
