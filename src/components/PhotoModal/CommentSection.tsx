@@ -1,20 +1,14 @@
 import { observer } from "mobx-react";
 import React from "react";
-import { Comment } from "../shared/types/PhotosTypes";
-import { AddCommentForm } from "./AddCommentForm";
-
-interface CommentSectionProps {
-  comments: Comment[] | undefined;
-}
+import { CommentSectionProps } from "../../shared/types/PropsTypes";
+import { AddCommentForm } from "../AddCommentForm/index";
 
 export const CommentSection = observer(
   ({ comments }: CommentSectionProps): JSX.Element => {
-    if (typeof comments === "undefined") return <h1>Loading</h1>;
-
     return (
       <div className="commentSection">
-        <AddCommentForm />
         <span className="commentsQuantity">{comments.length} comment(s)</span>
+        <AddCommentForm />
         <ul className="comments">
           {comments.length ? (
             comments.map((comment) => (

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./App.scss";
 import { usePhotos } from "./utils/hooks/usePhotos";
-import { PhotoModal } from "./components/PhotoModal";
+import { PhotoModal } from "./components/PhotoModal/index";
 
 export const PhotoIdContext = React.createContext<number>(-1);
 

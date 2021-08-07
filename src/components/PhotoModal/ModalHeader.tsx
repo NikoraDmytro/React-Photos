@@ -1,21 +1,14 @@
 import React from "react";
-import CloseButton from "../shared/img/Close.png";
-
-interface ModalHeaderProps {
-  imageUrl: string | undefined;
-  close: () => void;
-}
+import { ModalHeaderProps } from "../../shared/types/PropsTypes";
 
 export const ModalHeader = ({
   imageUrl,
   close,
 }: ModalHeaderProps): JSX.Element => {
-  if (typeof imageUrl === "undefined") return <h1> Loading</h1>;
-
   return (
     <header>
       <img
-        src={CloseButton}
+        src="/images/close.png"
         className="closeButton"
         alt="Close"
         onClick={close}

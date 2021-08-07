@@ -3,10 +3,6 @@ export type Photo = {
   url: string;
 };
 
-export type PhotoModalProps = {
-  close: () => void;
-};
-
 export type Comment = {
   id: number | string;
   userName?: string;
