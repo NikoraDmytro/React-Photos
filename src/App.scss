@@ -1,25 +1,13 @@
-.App {
+.app {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 0.5em;
   & > img {
-    margin-bottom: 2%;
-    width: 32%;
+    margin-bottom: 0.5em;
+    width: auto;
     cursor: pointer;
   }
 
   outline: none;
-}
-
-@media screen and (max-width: 800px) {
-  .App > img {
-    width: 49%;
-  }
-}
-
-@media screen and (max-width: 550px) {
-  .App > img {
-    width: 100%;
-  }
 }

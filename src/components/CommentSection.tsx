@@ -1,39 +1,31 @@
 import { observer } from "mobx-react";
 import React from "react";
 import { Comment } from "../shared/types/PhotosTypes";
-import { parseDate } from "../utils/functions/parseDate";
 import { AddCommentForm } from "./AddCommentForm";
 
 interface CommentSectionProps {
-  Comments: Comment[] | undefined;
+  comments: Comment[] | undefined;
   photoId: number;
 }
 
 export const CommentSection = observer(
-  ({ Comments, photoId }: CommentSectionProps): JSX.Element => {
-    if (typeof Comments === "undefined") return <h1>Loading</h1>;
-
-    const Comment = ({ comment }: { comment: Comment }) => {
-      const date = new Date(comment.date);
-      return (
-        <li>
-          <p className="CommentHeader">
-            <b>{comment.name || "Anonymous"}</b> <time>{parseDate(date)}</time>
-          </p>
-          <p className="CommentText">{comment.text}</p>
-        </li>
-      );
-    };
+  ({ comments, photoId }: CommentSectionProps): JSX.Element => {
+    if (typeof comments === "undefined") return <h1>Loading</h1>;
 
     return (
-      <div className="CommentSection">
-        <span className="CommentsNumber">{Comments.length} comment(s)</span>
-
-        <ul className="Comments">
-          <AddCommentForm photoId={photoId} />
-          {Comments.length ? (
-            Comments?.map((comment) => (
-              <Comment key={comment.id} comment={comment} />
+      <div className="commentSection">
+        <AddCommentForm photoId={photoId} />
+        <span className="commentsQuantity">{comments.length} comment(s)</span>
+        <ul className="comments">
+          {comments.length ? (
+            comments.map((comment) => (
+              <li key={comment.id}>
+                <p className="commentHeader">
+                  <b>{comment.userName || "Anonymous"}</b>{" "}
+                  <time>{new Date(comment.date).toLocaleDateString()}</time>
+                </p>
+                <p className="commentText">{comment.text}</p>
+              </li>
             ))
           ) : (
             <h3>No Comments</h3>

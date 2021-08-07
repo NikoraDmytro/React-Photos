@@ -1,7 +1,7 @@
 import * as Yup from "yup";
 
-export const AddCommentFormValidation = Yup.object({
-  name: Yup.string()
+export const addCommentFormValidation = Yup.object({
+  userName: Yup.string()
     .max(20, "Too long!")
     .required("You must insert your name!"),
   text: Yup.string()

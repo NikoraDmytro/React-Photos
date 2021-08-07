@@ -1,4 +1,4 @@
-.FixedLayout {
+.modalLayout {
   position: fixed;
   top: 0;
   left: 0;
@@ -14,7 +14,7 @@ header {
   display: flex;
   flex-direction: column;
   background-color: #000000;
-  .CloseButton {
+  .closeButton {
     position: absolute;
     align-self: flex-end;
     cursor: pointer;
@@ -27,7 +27,7 @@ header {
   }
 }
 
-.ModalWindow {
+.modal {
   position: relative;
   width: 80%;
   max-height: 95%;
@@ -40,12 +40,12 @@ header {
   }
 }
 
-.CommentSection {
+.commentSection {
   margin-top: 1em;
-  .CommentsNumber {
+  .commentsQuantity {
     font-size: 1.5em;
   }
-  .Comments {
+  .comments {
     list-style-type: none;
     padding-left: 0;
     border-top: 2px solid black;
@@ -55,7 +55,7 @@ header {
     p {
       margin: 0.5em 0;
     }
-    .CommentText {
+    .commentText {
       margin-top: 0;
       margin-left: 0.75em;
     }
@@ -67,12 +67,12 @@ header {
   }
 }
 
-.AddCommentForm {
+.addCommentForm {
   margin: 0.25em 0;
   display: flex;
   flex-direction: column;
   width: 90%;
-  .FormInput {
+  .formInput {
     border-bottom: 1px solid #bfbfc8;
     position: relative;
     padding: 0.25em;
@@ -85,7 +85,7 @@ header {
         -webkit-box-shadow: 0 0 0 30px white inset !important;
       }
     }
-    .Error {
+    .error {
       color: #ed1931;
       font-size: 0.75em;
       position: absolute;
@@ -93,7 +93,7 @@ header {
       bottom: 0;
     }
   }
-  .AddCommentButton {
+  .addCommentButton {
     width: fit-content;
     margin-top: 0.75em;
     padding: 0.5em 1.5em;

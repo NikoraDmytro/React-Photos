@@ -1,39 +1,37 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { Comment, FormProps } from "../shared/types/PhotosTypes";
-import { AddCommentFormValidation } from "./../utils/validation/AddCommentFormValidation";
-import { AddNewComment } from "./../utils/functions/AddNewComment";
+import { addCommentFormValidation } from "./../utils/validation/AddCommentFormValidation";
+import { addNewComment } from "./../utils/functions/AddNewComment";
+import { FormProps, FormValues } from "../shared/types/FormTypes";
 
 export const AddCommentForm = ({ photoId }: FormProps): JSX.Element => {
-  const initialValues: Comment = {
-    id: "",
-    name: "",
+  const initialValues: FormValues = {
+    userName: "",
     text: "",
-    date: 0,
   };
 
   return (
     <Formik
       initialValues={initialValues}
-      validationSchema={AddCommentFormValidation}
-      onSubmit={(values, actions) => AddNewComment(photoId, values, actions)}
+      validationSchema={addCommentFormValidation}
+      onSubmit={(values, actions) => addNewComment(photoId, values, actions)}
     >
-      <Form className="AddCommentForm">
-        <div className="FormInput">
-          <Field name="name" type="text" placeholder="Your Name" />
-          <strong className="Error">
-            <ErrorMessage name="name" />
+      <Form className="addCommentForm">
+        <div className="formInput">
+          <Field name="userName" type="text" placeholder="Your Name" />
+          <strong className="error">
+            <ErrorMessage name="userName" />
           </strong>
         </div>
 
-        <div className="FormInput">
+        <div className="formInput">
           <Field name="text" type="text" placeholder="Your Comment" />
-          <strong className="Error">
+          <strong className="error">
             <ErrorMessage name="text" />
           </strong>
         </div>
 
-        <button type="submit" className="AddCommentButton">
+        <button type="submit" className="addCommentButton">
           Leave comment
         </button>
       </Form>

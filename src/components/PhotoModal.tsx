@@ -1,28 +1,26 @@
 import React from "react";
 import { PhotoModalProps } from "../shared/types/PhotosTypes";
 import "./PhotoModal.scss";
-import { PhotoInfoStore } from "./../stores/PhotosInfoStore";
+import { PhotosStore as Store } from "../stores/PhotosStore";
 import { observer } from "mobx-react";
 import { ModalHeader } from "./ModalHeader";
 import { CommentSection } from "./CommentSection";
 
 export const PhotoModal = observer(
   ({ photoId, close }: PhotoModalProps): JSX.Element => {
-    const photoInfo = PhotoInfoStore.photos[photoId];
+    if (photoId === -1) return <></>;
 
-    if (!photoInfo) {
-      PhotoInfoStore.loadPhotoInfo(photoId);
-    }
+    const photoInfo = Store.photos[photoId] || Store.loadPhotoData(photoId);
 
     const imageUrl = photoInfo && photoInfo.url;
-    const Comments = photoInfo && photoInfo.Comments;
+    const comments = photoInfo && photoInfo.comments;
 
     return (
-      <div className="FixedLayout">
-        <div className="ModalWindow">
+      <div className="modalLayout">
+        <div className="modal">
           <ModalHeader imageUrl={imageUrl} close={close} />
 
-          <CommentSection photoId={photoId} Comments={Comments} />
+          <CommentSection photoId={photoId} comments={comments} />
         </div>
       </div>
     );

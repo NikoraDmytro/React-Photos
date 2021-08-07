@@ -10,15 +10,11 @@ export type PhotoModalProps = {
 
 export type Comment = {
   id: number | string;
-  name?: string;
+  userName?: string;
   text: string;
-  date: number;
+  date: Date;
 };
 
-export type PhotoInfo = Photo & {
-  Comments: Comment[];
-};
-
-export type FormProps = {
-  photoId: number;
+export type PhotoData = Photo & {
+  comments: Comment[];
 };

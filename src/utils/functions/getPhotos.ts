@@ -1,16 +1,16 @@
 import axios from "axios";
 import { Photo } from "../../shared/types/PhotosTypes";
 
-const address = "https://boiling-refuge-66454.herokuapp.com/images";
+const url = "https://boiling-refuge-66454.herokuapp.com/images";
 
-export const getPhotos = async (): Promise<Photo[] | undefined> => {
+export const getPhotos = async (): Promise<Photo[]> => {
   try {
-    const response = await axios.get(address);
+    const response = await axios.get<Photo[]>(url);
 
-    const Photos: Photo[] = response.data;
+    const photos: Photo[] = response.data;
 
-    return Photos;
+    return photos;
   } catch (err) {
-    console.log(err);
+    throw err;
   }
 };

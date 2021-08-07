@@ -16,7 +16,7 @@ export const ModalHeader = ({
     <header>
       <img
         src={CloseButton}
-        className="CloseButton"
+        className="closeButton"
         alt="Close"
         onClick={close}
       />

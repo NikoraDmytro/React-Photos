@@ -2,18 +2,22 @@ import { useState, useEffect } from "react";
 import { Photo } from "../../shared/types/PhotosTypes";
 import { getPhotos } from "./../functions/getPhotos";
 
-export const usePhotos = (): Photo[] | undefined => {
-  const [Photos, setPhotos] = useState<Photo[] | undefined>();
+export const usePhotos = (): Photo[] => {
+  const [photos, setPhotos] = useState<Photo[]>([]);
 
   useEffect(() => {
     const loadData = async () => {
-      const data = await getPhotos();
+      try {
+        const data = await getPhotos();
 
-      setPhotos(data);
+        setPhotos(data);
+      } catch (err) {
+        console.log(err);
+      }
     };
 
-    if (typeof Photos === "undefined") loadData();
-  });
+    loadData();
+  }, []);
 
-  return Photos;
+  return photos;
 };

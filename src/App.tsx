@@ -4,26 +4,20 @@ import { usePhotos } from "./utils/hooks/usePhotos";
 import { PhotoModal } from "./components/PhotoModal";
 
 function App(): JSX.Element {
-  const Photos = usePhotos();
-  const [selectedPhotoId, setSelectedPhotoId] = useState<number | undefined>();
+  const photos = usePhotos();
+  const [selectedPhotoId, setSelectedPhotoId] = useState<number>(-1);
 
-  const closeModal = () => setSelectedPhotoId(undefined);
+  const closeModal = () => setSelectedPhotoId(-1);
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>): void => {
     if (e.key === "Escape") closeModal();
   };
 
-  if (typeof Photos === "undefined") {
-    return <h1>Loading</h1>;
-  }
-
   return (
-    <div className="App" onKeyDown={onKeyDown} tabIndex={0}>
-      {typeof selectedPhotoId !== "undefined" ? (
-        <PhotoModal photoId={selectedPhotoId} close={closeModal} />
-      ) : null}
+    <div className="app" onKeyDown={onKeyDown} tabIndex={0}>
+      <PhotoModal photoId={selectedPhotoId} close={closeModal} />
 
-      {Photos?.map((photo) => (
+      {photos.map((photo) => (
         <img
           onClick={() => setSelectedPhotoId(photo.id)}
           key={photo.id}
